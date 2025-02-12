@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Event Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #6be9ff;
+            color: white;
+            padding: 1rem;
+        }
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: #d2f2ff;
+        }
+        .main-nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 0 1rem;
+        }
+        .home-link {
+            background-color: #858585;
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .nav-button:hover {
+            background-color: #ddd;
+        }
+        .home-button {
+            background-color: #8aedff;
+            color: white;}
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>UNIVERSITI TENAGA NASIONAL</h1>
+        <h2>The National Energy University</h2>
+        <h3>Organizer</h3>
+    </div>
+
+    <nav class="main-nav">
+      <a class="nav-button home-button" href="organizerhomepage.php">Homepage</a>
+      <a href="organizeravailableevent.php">Available Events</a>
+      <a href="EOproposalform.php">Event Management</a>
+      <a href="myevent.php">My Event</a>
+      <a href="eventstatus.php.">Event Status</a>
+    </nav>
+
+    <label for="venues">Select A Venue:</label>
+    <select name="venues">
+        <option value="DSS">DSS</option>
+        <option value="Sport Arena">Sport Arena</option>
+        <option value="Upten">Upten</option>
+        <option value="Library">Library</option>
+      </select>
+      
+      <label for="date">Select A Date :</label>
+      <input type="date" name="date" value="2024-04-04">
+      <template>
+        <input type="date" :value="dateValue" @change="handleChange">
+      </template>
+      
+      <script>
+      export default {
+        name: "DatePickerButton",
+        props: {
+          dateValue: {
+            type: String,
+            default: ""
+          }
+        },
+        methods: {
+          handleChange(event) {
+            this.$emit("update:dateValue", event.target.value);
+          }
+        }
+      };
+      </script>
+      <form>
+        <label for="time">Enter a time:</label>
+        <input type="time" id="time" name="time" min="08:00" max="17:00" step="1800">
+      </form>
+
+      <a href="EOproposalform.html">
+        <button type="button" style="font-size: 1.2em; padding: 10px 20px; margin-top: 20px;">Next Page</button>
+      </a>
+</body>
+</html>

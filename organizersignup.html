@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universiti Tenaga Nasional - Organizer Sign Up</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('uniten.jpg'); /* Set the background image */
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh;
+            flex-direction: column;
+            font-size: 1.5rem;
+            color: white;
+        }
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+            width: 50%;
+        }
+
+        .form__group {
+            position: relative;
+            padding: 15px 0 0;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .form__field {
+            font-family: inherit;
+            width: 100%;
+            border: 0;
+            border-bottom: 2px solid #ccc; /* Change the gray variable reference */
+            outline: 0;
+            font-size: 1.3rem;
+            color: white;
+            padding: 7px 0;
+            background: transparent;
+            transition: border-color 0.2s;
+
+            &::placeholder {
+                color: transparent;
+            }
+
+            &:placeholder-shown ~ .form__label {
+                font-size: 1.3rem;
+                cursor: text;
+                top: 20px;
+            }
+        }
+
+        .form__label {
+            position: absolute;
+            top: 0;
+            display: block;
+            transition: 0.2s;
+            font-size: 1rem;
+            color: #ccc; /* Change the gray variable reference */
+        }
+
+        .form__field:focus {
+            ~ .form__label {
+                position: absolute;
+                top: 0;
+                display: block;
+                transition: 0.2s;
+                font-size: 1rem;
+                color: #4CAF50; /* Change the primary variable reference */
+                font-weight: 700;
+            }
+            padding-bottom: 6px;
+            font-weight: 700;
+            border-width: 3px;
+            border-image: linear-gradient(to right, #4CAF50, #008CBA); 
+            border-image-slice: 1;
+        }
+
+        /* reset input */
+        .form__field {
+            &:required,
+            &:invalid {
+                box-shadow: none;
+            }
+        }
+
+        /* demo */
+        @media (max-width: 600px) {
+            body {
+                font-size: 1.2rem;
+            }
+        }
+        .button-86 {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 10px;
+            background-color: #616161;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .button-86:hover {
+            background-color: #4a4a4a;
+        }
+
+        .button-86:active {
+            background-color: #5a5a5a;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transform: translateY(1px);
+        }
+
+        .text-center {
+            color: #fff;    
+            text-transform: uppercase;
+            font-size: 23px;
+            margin: -50px 0 80px 0;
+            display: block;
+            text-align: center;
+        }
+        .box {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            background-color: rgba(0, 0, 0, 0.89);
+            border-radius: 3px;
+            padding: 70px 100px;
+        }
+        .input-container {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        .input-container label {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            font-size: 16px;
+            color: #fff;    
+            transition: all 0.5s ease-in-out;
+        }
+        .input-container input { 
+            border: 0;
+            border-bottom: 1px solid #555;  
+            background: transparent;
+            width: 100%;
+            padding: 8px 0 5px 0;
+            font-size: 16px;
+            color: #fff;
+        }
+        .input-container input:focus { 
+            border: none;    
+            outline: none;
+            border-bottom: 1px solid #e74c3c;    
+        }
+        .btn {
+            color: #fff;
+            background-color: #e74c3c;
+            outline: none;
+            border: 0;
+            color: #fff;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            margin-top: 50px;
+            border-radius: 2px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .input-container input:focus ~ label,
+        .input-container input:valid ~ label {
+            top: -12px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <div class="header-content">
+            <img src="unitenlogo.png" alt="UNIVERSITI TENAGA NASIONAL logo">
+        </div>
+    </div>
+    <div class="box">
+        <form action="organizer-process-form.php" method="post">
+            <span class="text-center">Organizer Sign Up</span>
+            <div class="input-container">
+                <input type="input" class="form__field" placeholder="Name" name="name" id='name' required/>
+                <label>Name</label>       
+            </div>
+            <div class="input-container">
+                <input type="input" class="form__field" placeholder="Email" id="email" name="email" required/>
+                <label>Email</label>       
+            </div>
+            <div class="input-container">
+                <input type="input" class="form__field" placeholder="PhoneNum" id="number" name="number" required/>
+                <label>Phone Number</label>       
+            </div>
+            <div class="input-container">
+                <input type="input" class="form__field" placeholder="UserID" id="userid" name="userid" required/>
+                <label>User ID</label>       
+            </div>
+            <div class="input-container">
+                <input type="password" class="input-field" placeholder="Password" id="password" name="password" required>
+                <input type="checkbox" id="show-password-checkbox">
+                <label for="show-password-checkbox">.</label>
+            </div>
+            <input type="submit" class="button-86" id="Submit" name="submit" value="Sign Up">
+            <br>
+            <a href="/forgot-password" style="font-size: 14px; color: #44b9fd;">Forgot Password?</a>
+        </form>
+    </div>
+
+    <script>
+        var showPasswordCheckbox = document.getElementById('show-password-checkbox');
+        var passwordInput = document.getElementById('password');
+
+        showPasswordCheckbox.addEventListener('change', function() {
+            if (showPasswordCheckbox.checked) {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        });
+    </script>
+</body>
+</html>

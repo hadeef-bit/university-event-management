@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universiti Tenaga Nasional - Event Management</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('uniten.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px; /* Increase the maximum width */
+            padding: 3rem; /* Increase the padding */
+            text-align: center;
+        }
+        .header {
+            background-color: transparent;
+            color: rgb(0, 0, 0);
+            padding: 1rem;
+            text-align: center;
+        }
+        .header img {
+            width: auto;
+            height: 150px; /* Adjust the height of the logo here */
+            margin-bottom: 1rem;
+        }
+        .button-74 {
+            background-color: #fbeee0;
+            border: 2px solid #422800;
+            border-radius: 30px;
+            box-shadow: #422800 4px 4px 0 0;
+            color: #422800;
+            cursor: pointer;
+            display: inline-block;
+            font-weight: 600;
+            font-size: 18px;
+            padding: 0 18px;
+            line-height: 50px;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+        .button-74:hover {
+            background-color: #fff;
+        }
+        .button-74:active {
+            box-shadow: #422800 2px 2px 0 0;
+            transform: translate(2px, 2px);
+        }
+        @media (min-width: 768px) {
+            .button-74 {
+                min-width: 120px;
+                padding: 0 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="unitenlogo.png" alt="UNIVERSITI TENAGA NASIONAL logo">
+            <h1>Uniten Event Management System</h1>
+        </div>
+        <p>Organizer</p>
+        <form>
+            <input type="button" class="button-74" id="signup" name="role" value="signup" onclick="setRole('signup'); redirectToorganizersignup()" required>
+            <input type="button" class="button-74" id="login" name="role" value="login" onclick="setRole('login'); redirectToorganizerlogin()">
+            <input type="hidden" id="selectedRole" name="role">
+        </form>
+        <br>
+        <p><a href="contact.html">Contact Us</a></p>
+    </div>
+            <script>
+                function setRole(role) {
+                    document.getElementById('selectedRole').value = role;
+                }
+        
+                function redirectToorganizersignup() {
+                    window.location.href = 'organizersignup.html';
+                }
+                function redirectToorganizerlogin() {
+                    window.location.href = 'organizerlogin.html';
+                }
+            </script>
+        </body>
+        </html>
+            </body>
+    <main>
+</html>

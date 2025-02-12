@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Event Management</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('uniten.jpg') no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.5; /* Adjust this value for lighter/darker overlay */
+    z-index: -2;
+}
+
+body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adjust this value for lighter/darker overlay */
+    z-index: -1;
+}
+
+.header, .main-nav, .form-box {
+    position: relative;
+    z-index: 1;
+}
+        .header {
+            background-color: #2c3670;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-content {
+            display: flex;
+            align-items: center;
+        }
+        .header img {
+            height: 70px;
+            margin-right: 20px;
+        }
+        .nav-bar {
+            background-color: #c9a4db;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-items {
+            display: flex;
+            align-items: center;
+            margin-left: auto; /* This shifts the navigation items to the right */
+        }
+        .nav-item {
+            margin-right: 10px;
+        }
+        .button {
+            background-color: transparent;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        .button a {
+            text-decoration: none;
+            color: white;
+        }
+        .button:hover {
+            color: #ccc;
+        }
+        .logout-button {
+            background-color: #ff3465;
+            color: white;
+        }
+        .logout-button:hover {
+            background-color: #ff3465;
+        }
+        .nav-item {
+            margin: 0 1rem;
+        }
+        .nav-button {
+            background-color: transparent;
+            border: none;
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .nav-button a {
+            text-decoration: none;
+            color: #333;
+            padding: 0 1rem;
+        }
+        .nav-button:hover a {
+            color: #e6f5d0;
+        }
+        .nav-button:hover {
+            background-color: #ddd;
+        }
+        .home-button {
+            background-color: #616161;
+            color: white;
+        }
+        .event-container {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            margin-top: 20px;
+        }
+        .event-box {
+            margin-bottom: 20px;
+            text-align: left;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .event-image {
+            margin-bottom: 10px;
+        }
+        .event-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .event-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        .event-description-text {
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <div class="header-content">
+        <img src="unitenlogo.png" alt="UNIVERSITI TENAGA NASIONAL logo">
+        <h1>University Event Management System</h1>
+    </div>
+    <div class="nav-item">
+        <button class="button"><a href="adminhomepage.php">Homepage</a></button>
+    </div>
+    <div class="nav-item">
+        <button class="button"><a href="adminpendingproposal.php">Pending Proposal</a></button>
+    </div>
+    <div class="nav-item">
+        <button class="button"><a href="adminapproved.php">Approved Proposal</a></button>
+    </div>
+    <div class="nav-item">
+        <button class="button"><a href="adminrejected.php">Rejected Proposal</a></button>
+    </div>
+    <div class="nav-item">
+        <button class="button"><a href="admincontactus.html">Contact Us</a></button>
+    </div>
+    <div class="nav-item">
+        <button class="button"><a href="users.php">Users</a></button>
+    </div>
+    <div class="nav-item">
+            <button class="button logout-button" onclick="location.href='page1.html'">Logout</button>
+        </div>
+    </header>
+<main>
+<div class="event-container">
+    <h2>Approved Events</h2>
+    <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "eventuser";
+
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "SELECT * FROM proposal WHERE Status='approved'";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo "<div class='event-box'>";
+                echo "<div class='event-image'><img src='" . $row["Image"]. "' alt='Event Image'></div>";
+                echo "<h3>Venue: " . $row["Venue"]. "</h3>";
+                echo "<p>Date: " . $row["Date"]. "</p>";
+                echo "<p>Time: " . $row["Time"]. "</p>";
+                echo "<h2 class='event-title'>" . $row["Title"]. "</h2>";
+                echo "<p class='event-description-text'>" . $row["Description"]. "</p>";
+                echo "<p>Category: " . $row["College"]. "</p>";
+                echo "<p>Name: " . $row["Name"]. "</p>";
+                echo "<p>Capacity: " . $row["Capacity"]. "</p>";
+                echo "</div>";
+            }
+        } else {
+            echo "0 results";
+        }
+
+        $conn->close();
+    ?>
+</div>
+    </main>
+</body>
+</html>

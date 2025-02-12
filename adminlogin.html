@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Event Management</title>
+    <style>
+        body {
+            background-image: url('uniten.jpg'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #72a874;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .login-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 20rem; /* Adjust width as needed */
+            margin: auto; /* Center align horizontally */
+            margin-top: 4rem; /* Adjust top margin for spacing */
+        }
+        .login-title {
+            margin-bottom: 1.5rem;
+            color: #4CAF50;
+            text-align: center;
+        }
+        .input-field {
+            width: 100%;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem; /* Adjust font size */
+        }
+        .input-field:focus {
+            outline: none;
+            box-shadow: 0 0 2px 1px #4CAF50;
+        }
+        .login-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem; /* Adjust font size */
+        }
+        .login-button:hover {
+            background-color: #45a049;
+        }
+        .forgot-password {
+            font-size: 0.875rem; /* Adjust font size */
+            text-align: center;
+            margin-top: 0.5rem; /* Adjust top margin */
+        }
+        .forgot-password a {
+            color: #44b9fd;
+            text-decoration: none;
+        }
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>UNIVERSITI TENAGA NASIONAL</h1>
+        <h2>The National Energy University</h2>
+    </div>
+    <div class="login-container">
+        <h2 class="login-title">Organizer Log In</h2>
+        <form action="adminlogin.php" id="login-form" method="post">
+            <div class="input-container">
+                <input type="input" class="input-field" placeholder="User ID" id="UserID" name="UserID" required>
+            </div>
+            <div class="input-container">		
+                <input type="password" class="input-field" placeholder="Password" id="Password" name="Password" required>
+                <input type="checkbox" id="show-password-checkbox">
+                <label for="show-password-checkbox">Show Password</label>
+            </div>
+            <input type="submit" class="login-button" id="submit-button" name="submit" value="Login">
+            <div class="forgot-password">
+                <a href="/forgot-password">Forgot Password?</a>
+            </div>
+        </form>
+    </div>
+    <script>
+        showPasswordCheckbox.addEventListener('change', function() {
+            var passwordInput = document.getElementById('Password');
+            if (showPasswordCheckbox.checked) {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        });
+    </script>
+</body>
+</html>

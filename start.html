@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamborghini car animation</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .sky {
+            width: 100vw;
+            height: 100vh;
+            background-image: url('sky.jpeg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .tree {
+            height: 100vh;
+            background-image: url('tree-removebg-preview(1).png');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .track {
+            background-image: url('track.jpeg');
+            background-repeat: repeat-x;
+            position: absolute;
+            bottom: 0px;
+            width: 1000vw;
+            height: 20vh;
+            animation: trackanimation 6s linear infinite;
+        }
+
+        .wheel {
+            position: absolute;
+            animation: wheelanimation linear .6s infinite;
+        }
+
+        .wheel1 {
+            background-image: url('voltorb.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 46px;
+            height: 49px;
+            bottom: 71px;
+            left: 570px;
+        }
+
+        .wheel2 {
+            background-image: url('voltorb.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 43px;
+            height: 44px;
+            bottom: 77px;
+            left: 433px;
+        }
+
+        .wheel3 {
+            background-image: url('voltorb.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 49px;
+            height: 54px;
+            bottom: 65px;
+            left: 296px;
+        }
+
+        .wheel4 {
+            background-image: url('voltorb.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 52px;
+            height: 53px;
+            bottom: 59px;
+            left: 699px;
+        }
+
+        @keyframes wheelanimation {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes trackanimation {
+            100% {
+                transform: translate(-500vw);
+            }
+        }
+
+        .center-image {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px; /* Adjust the width as needed */
+            height: 500px;
+            z-index: 10;
+        }
+        .pokemon {
+  width: 200px;
+  height: 100px;
+  /* center content using flex box */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* overlay */
+  box-shadow: 0 0 0 100px inset, 0 0 5px grey;
+  /* hover out transition */
+  transition: box-shadow 1s;
+  float: left;
+  margin: 10px;
+  color: rgba(71, 121, 94, .9);
+}
+
+
+/* pokemone names */
+
+.pokemon::after {
+  width: 90%;
+  height: 80%;
+  display: block;
+  white-space: pre;
+  font: 12pt 'sigmar one';
+  color: white;
+  border: 2px solid;
+  text-align: center;
+  /* center content using flex box */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* hover out transition */
+  transition: opacity 1s .5s;
+  color: rgba(71, 121, 94, .9);
+}
+
+
+/* reveal pokemone picture on hover */
+
+.pokemon:hover {
+  box-shadow: 0 0 0 5px inset, 0 0 5px grey, 0 0 10px grey inset;
+  transition: box-shadow 1s;
+}
+
+
+/* hide pokemone name on hover */
+
+.pokemon:hover::after {
+  opacity: 0;
+  transition: opacity .5s;
+  color: rgba(71, 121, 94, .9);
+}
+    </style>
+</head>
+<body>
+    <div class="sky"></div>
+    <div class="tree"></div>
+    <div class="track"></div>
+    <div class="wheel wheel1"></div>
+    <div class="wheel wheel2"></div>
+    <div class="wheel wheel3"></div>
+    <div class="wheel wheel4"></div>
+    <img src="pokemon-logo-png-5.png" alt="Pokemon Logo" class="center-image">
+    <button class="pokemon">Start</button>
+
+    <script>
+        var aud = document.createElement('audio');
+        aud.setAttribute('src', 'sound.mp4');
+        aud.loop = true;
+        aud.play();
+    </script>
+</body>
+</html>
